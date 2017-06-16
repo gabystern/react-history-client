@@ -19,21 +19,30 @@ class TopicsContainer extends Component {
       .then(topics => this.setState({ topics }))
   }
 
-  render() {
+  renderTopics() {
     return (
-      <div className="container">
+      <div>
         <div className="row">
           <h1>CREATING HISTORY</h1>
         </div>
         <div className="row">
           <TopicList topicList={this.state.topics}/>
         </div>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div className="container">
+
         <Switch>
           <Route exact path='/:id' render={(routerProps) => {
             const id = routerProps.match.params.id
             const topic = this.state.topics.find(t => t.id === parseInt(id) )
             return <TopicTimeline topic={topic} />
           }}/>
+          <Route render={this.renderTopics.bind(this)} />
         </Switch>
       </div>
     );
