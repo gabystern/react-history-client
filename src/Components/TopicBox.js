@@ -1,5 +1,4 @@
 import React from 'react';
-import TopicTimeline from './TopicTimeline'
 import { Link } from 'react-router-dom'
 
 const TopicBox = ({ topic }) => {
