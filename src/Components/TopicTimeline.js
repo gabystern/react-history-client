@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Parallax } from 'react-parallax';
+import { Parallax, Background } from 'react-parallax';
 
 export default class TopicTimeline extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       topic: ''
@@ -11,7 +11,7 @@ export default class TopicTimeline extends Component {
   }
 
   makeEventsJson() {
-    const events = this.props.topic.events
+    let events = this.props.topic.events
 
     let event_array = events.map(e => {
       return {
@@ -33,7 +33,7 @@ export default class TopicTimeline extends Component {
   }
 
   makeJson() {
-    const topic = this.props.topic
+    let topic = this.props.topic
     return {
       title: {
         media: {
@@ -48,17 +48,44 @@ export default class TopicTimeline extends Component {
       events: this.makeEventsJson()
     }
   }
-  // let timeline_json = make_the_json(); // you write this part
-  // // two arguments: the id of the Timeline container (no '#')
-  // // and the JSON object or an
+
 
 
   render() {
     return (
       <div>
-        <Parallax bgImage='{this.props.topic.events[0].event_medium.url}' strength={400}>
-          <br/>
-          <h1> some content that is displayed above the bgImage </h1>
+        <Parallax strength={300}>
+          <Background>
+            <img src={this.props.topic.events[0].event_medium.url}/>
+            <img src={this.props.topic.events[1].event_medium.url}/>
+          </Background>
+          <h1>something else</h1>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
+          <p>{this.props.topic.events[0].event_text.text}</p>
         </Parallax>
       </div>
     )

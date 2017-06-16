@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 const TopicList = ({ topicList }) => {
   let allTopics = topicList.map((topic) => {
-    console.log(topic)
     return (
       <div className="col s4">
         <Link to={`/${topic.id}`}>
@@ -12,6 +11,7 @@ const TopicList = ({ topicList }) => {
         </Link>
       </div>
     )
+
   })
 
   return (
