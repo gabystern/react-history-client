@@ -3,3 +3,12 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.card {
+  width:300px;
+}
+
+.image {
+  height: 250px;
+  width: 250px;
+}
