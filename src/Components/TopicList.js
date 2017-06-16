@@ -1,9 +1,17 @@
 import React from 'react';
 import TopicBox from './TopicBox'
+import { Link } from 'react-router-dom'
 
 const TopicList = ({ topicList }) => {
   let allTopics = topicList.map((topic) => {
-    return <TopicBox topic={topic} key={topic.id}/>
+    return (
+      <div className="col s4">
+        <Link to={`/${topic.id}`}>
+        <TopicBox topic={topic} key={topic.id}/>
+        </Link>
+      </div>
+    )
+
   })
 
   return (
