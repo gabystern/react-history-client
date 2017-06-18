@@ -81,14 +81,15 @@ export default class TopicTimeline extends Component {
             fontFamily: 'Menlo-Regular, Menlo, monospace',
             fontSize: 30,
             lineHeight: '10px',
-            color: 'white'
+            color: 'white',
+            textShadow: 'black 0.1em 0.1em 0.2em'
             // display: 'flex', alignItems: 'center', justifyContent: 'center'
         }
     return (
         <Parallax ref="parallax" pages={3}>
 
-          <Parallax.Layer offset={0} speed={1} style={{ backgroundImage: `url(${this.props.topic.events[0].event_medium.url})`, backgroundSize: 'cover'}} />
-          <Parallax.Layer offset={1} speed={1} style={{ backgroundImage: `url(${this.props.topic.events[1].event_medium.url})`, backgroundSize: 'cover' }} />
+          <Parallax.Layer offset={0} speed={1} style={{ backgroundImage: `url(${this.props.topic.events[0].event_medium.url})`, backgroundSize: 'contain', backgroundPosition: 'center'}} />
+          <Parallax.Layer offset={1} speed={1} style={{ backgroundImage: `url(${this.props.topic.events[1].event_medium.url})`, backgroundSize: 'contain', backgroundPosition: 'center' }} />
 
           <Parallax.Layer
             offset={0}
