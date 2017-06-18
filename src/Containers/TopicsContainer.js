@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import '../TopicsContainer.css';
 import TopicList from '../Components/TopicList';
 import TopicTimeline from '../Components/TopicTimeline';
+import HistoryNewForm from '../Components/HistoryNewForm';
 
 class TopicsContainer extends Component {
   constructor() {
@@ -11,6 +12,8 @@ class TopicsContainer extends Component {
     this.state = {
       topics: []
     }
+
+    this.addNewHistory = this.addNewHistory.bind(this);
   }
 
   componentDidMount() {
@@ -32,27 +35,70 @@ class TopicsContainer extends Component {
     )
   }
 
+  addNewHistory(newTopic){
+    let events = newTopic.events.map(e => {
+      return {
+        event_medium_attributes: {
+          url: e.url,
+          caption: e.caption
+        },
+        event_text_attributes: {
+          headline: e.headline,
+          text: e.text
+        }
+      }
+    })
+    console.log(events)
+
+    fetch('http://localhost:3000/api/v1/topics', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'accept': 'application/json'
+      },
+      body: JSON.stringify({
+        topic: {
+          name: newTopic.name,
+          title_text_attributes: { headline: newTopic.title_text_headline, text: newTopic.title_text_text },
+          title_medium_attributes: { url: newTopic.title_medium_url, caption: newTopic.title_medium_caption },
+          events_attributes: events
+        }
+      })
+    }).then(resp => resp.json() )
+      .then(topic => this.setState((previousState) => {
+        return {
+          topics: [...previousState.topics, topic]
+        }
+      }))
+
+    this.props.history.push("/")
+  }
+
   render() {
     return (
-      <div className="container">
+      <div>
+        <nav>
+          <div className="nav-wrapper">
+            <ul className="left hide-on-med-and-down">
+              <li><Link to="/new">Add A New History</Link></li>
+            </ul>
+          </div>
+        </nav>
 
-        <Switch>
-          <Route exact path='/:id' render={(routerProps) => {
-            const id = routerProps.match.params.id
-            const topic = this.state.topics.find(t => t.id === parseInt(id) )
-            return <TopicTimeline topic={topic} />
-          }}/>
-          <Route render={this.renderTopics.bind(this)} />
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route exact path='/new' render={() => <HistoryNewForm onSubmit={this.addNewHistory}/>} />
+            <Route exact path='/:id' render={(routerProps) => {
+              const id = routerProps.match.params.id
+              const topic = this.state.topics.find(t => t.id === parseInt(id) )
+              return <TopicTimeline topic={topic} />
+            }}/>
+            <Route render={this.renderTopics.bind(this)} />
+          </Switch>
+        </div>
       </div>
     );
   }
 }
 
 export default TopicsContainer;
-
-// components
-// TopicsContainer --> TopicsPage --> TopicList --> TopicTimeline --> EditTopic
-                               // --> NewTopic
-
-// on here new route, /:id route

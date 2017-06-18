@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
 import { Parallax, Background } from 'react-parallax';
 
 export default class TopicTimeline extends Component {
@@ -48,8 +49,6 @@ export default class TopicTimeline extends Component {
       events: this.makeEventsJson()
     }
   }
-
-
 
   render() {
     return (
