@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import TopicsContainer from '../Containers/TopicsContainer'
 import { Route } from 'react-router-dom'
 

@@ -35,8 +35,43 @@ class TopicsContainer extends Component {
     )
   }
 
-  addNewHistory(){
-    console.log("hello")
+  addNewHistory(newTopic){
+    let events = newTopic.events.map(e => {
+      return {
+        event_medium_attributes: {
+          url: e.url,
+          caption: e.caption
+        },
+        event_text_attributes: {
+          headline: e.headline,
+          text: e.text
+        }
+      }
+    })
+    console.log(events)
+
+    fetch('http://localhost:3000/api/v1/topics', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'accept': 'application/json'
+      },
+      body: JSON.stringify({
+        topic: {
+          name: newTopic.name,
+          title_text_attributes: { headline: newTopic.title_text_headline, text: newTopic.title_text_text },
+          title_medium_attributes: { url: newTopic.title_medium_url, caption: newTopic.title_medium_caption },
+          events_attributes: events
+        }
+      })
+    }).then(resp => resp.json() )
+      .then(topic => this.setState((previousState) => {
+        return {
+          topics: [...previousState.topics, topic]
+        }
+      }))
+
+    this.props.history.push("/")
   }
 
   render() {
@@ -49,7 +84,7 @@ class TopicsContainer extends Component {
             </ul>
           </div>
         </nav>
-        
+
         <div className="container">
           <Switch>
             <Route exact path='/new' render={() => <HistoryNewForm onSubmit={this.addNewHistory}/>} />
@@ -67,9 +102,3 @@ class TopicsContainer extends Component {
 }
 
 export default TopicsContainer;
-
-// components
-// TopicsContainer --> TopicsPage --> TopicList --> TopicTimeline --> EditTopic
-                               // --> NewTopic
-
-// on here new route, /:id route

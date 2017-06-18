@@ -5,111 +5,95 @@ export default class HistoryNewForm extends Component {
     super(props);
     this.state = {
       name: '',
-      title_text: {
-        headline: '',
-        text: ''
-      },
-      title_medium: {
-        url: '',
-        caption: ''
-      },
-      events: [
-        {
-          name: '',
-          event_text: {
-            headline: '',
-            text: ''
-          },
-          event_start_date: '',
-          event_medium: {
-            url: '',
-            caption: ''
-          }
-       }
-     ]
-
+      title_text_headline: '',
+      title_text_text: '',
+      title_medium_url: '',
+      title_medium_caption: '',
+      events: [],
+      // new event information
+      headline: '',
+      text: '',
+      year: '',
+      url: '',
+      caption: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
-    // this.addProportion = this.addProportion.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.addEvent = this.addEvent.bind(this)
+    this.handleEventChange = this.handleEventChange.bind(this)
   }
 
-  handleChange(event) {
-    if (event.target.name !== 'proportions') {
-      this.setState({
-        [event.target.name]: event.target.value
-      })
+  handleChange(e) {
+    switch (e.target.name) {
+      case "name":
+        this.setState({ name: e.target.value})
+        break;
+      case "title_texts.headline":
+        this.setState({ title_text_headline: e.target.value })
+        break;
+      case "title_texts.text":
+        this.setState({ title_text_text: e.target.value })
+        break;
+      case "title_medium.url":
+        this.setState({ title_medium_url: e.target.value })
+        break;
+      case "title_medium.caption":
+        this.setState({ title_medium_caption: e.target.value })
+        break;
     }
-  }
 
-  renderEvents(){
-    return this.state.events.map( (e, idx) => (
-      <div key={e.name} className="row">
-        <div className="input-field col s8">
-          <input type="text" placeholder="Event Headline" name="event_text.headline" value={this.state.events[idx].event_text.headline} onChange={(e) => this.handleEventChange(e, idx)} />
-        </div>
-
-        <div className="input-field col s8">
-          <textarea type="text" placeholder="Event Description" name="event_text.text" value={this.state.events[idx].event_text.headline} onChange={this.handleEventChange} />
-        </div>
-
-        <div className="input-field col s8">
-          <input type="date" placeholder="Event Year" name="event_start_date" value={this.state.events[idx].event_start_date} onChange={this.handleEventChange} />
-        </div>
-
-        <div className="input-field col s8">
-          <input type="text" placeholder="Event Image Url" name="event_medium.url" value={this.state.events[idx].event_medium.url} onChange={this.handleEventChange} />
-        </div>
-
-        <div className="input-field col s8">
-          <input type="text" placeholder="Image Caption" name="event_medium.caption" value={this.state.events[idx].event_medium.caption} onChange={this.handleEventChange} />
-        </div>
-      </div>
-    ))
-  }
-
-  addEvent(e) {
-    console.log("hello")
   }
 
   handleEventChange(e){
-    // debugger
-
     switch (e.target.name) {
       case "event_text.headline":
-
+        this.setState({ headline: e.target.value })
         break;
       case "event_text.text":
-
+        this.setState({ text: e.target.value })
         break;
       case "event_start_date":
+        this.setState({ year: e.target.value })
         break;
       case "event_medium.url":
+        this.setState({ url: e.target.value })
         break;
       case "event_medium.caption":
+        this.setState({ caption: e.target.value })
         break;
-      default:
-
     }
-  //  this.setState(function(prevState){
-  //    return {
-  //      events: prevState.phoneNumbers.map((tel) => {
-  //        if (tel.id !== id) {
-  //          return tel
-  //        } else {
-  //          return {id: id, number: number}
-  //        }
-  //      })
-  //    }
-  //  })
- }
+  }
+
+  addEvent(e) {
+    e.preventDefault();
+    this.setState({
+      events: [...this.state.events, {
+        headline: this.state.headline,
+        text: this.state.text,
+        year: this.state.year,
+        url: this.state.url,
+        caption: this.state.caption
+      }],
+      headline: '',
+      text: '',
+      year: '',
+      url: '',
+      caption: ''
+    })
+  }
+
+  handleSubmit(e) {
+    console.log(this.state)
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+  }
 
   render() {
     return (
     <div>
       <h1>Add a New History</h1>
-      <form className="hover">
+      <form className="hover" onSubmit={this.handleSubmit}>
         <div className="row">
           <div className="input-field col s8">
             <input placeholder="History of What?" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -119,18 +103,48 @@ export default class HistoryNewForm extends Component {
         <h3>Quick Summary Info</h3>
         <div className="row">
           <div className="input-field col s8">
-            <input placeholder="Headline" name="title_texts.headline" value={this.state.title_text.headline} onChange={this.handleChange} />
+            <input placeholder="Headline" name="title_texts.headline" value={this.state.title_text_headline} onChange={this.handleChange} />
           </div>
         </div>
         <div className="row">
           <div className="input-field col s8">
-            <input placeholder="Quick Summary" name="title_texts.text" value={this.state.title_text.text} onChange={this.handleChange} />
+            <input placeholder="Quick Summary" name="title_texts.text" value={this.state.title_text_text} onChange={this.handleChange} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s8">
+            <input placeholder="Stater Image" name="title_medium.url" value={this.state.title_medium_url} onChange={this.handleChange} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s8">
+            <input placeholder="Image Caption" name="title_medium.caption" value={this.state.title_medium_caption} onChange={this.handleChange} />
           </div>
         </div>
 
         <h3>Add Events to this History</h3>
-        { this.renderEvents() }
-        <button className="waves-effect waves-light btn lime" onClick={this.addEvent.bind(this)}>Add Event</button>
+          <div className="row">
+            <div className="input-field col s8">
+              <input type="text" placeholder="Event Headline" name="event_text.headline" onChange={this.handleEventChange} />
+            </div>
+
+            <div className="input-field col s8">
+              <textarea type="text" placeholder="Event Description" name="event_text.text" onChange={this.handleEventChange} />
+            </div>
+
+            <div className="input-field col s8">
+              <input type="number" placeholder="Event Year" name="event_start_date" onChange={this.handleEventChange} />
+            </div>
+
+            <div className="input-field col s8">
+              <input type="text" placeholder="Event Image Url" name="event_medium.url" onChange={this.handleEventChange} />
+            </div>
+
+            <div className="input-field col s8">
+              <input type="text" placeholder="Image Caption" name="event_medium.caption" onChange={this.handleEventChange} />
+            </div>
+          </div>
+        <button className="waves-effect waves-light btn lime" onClick={this.addEvent}>Add Event</button>
         <br/><br/>
         <input className="waves-effect waves-light btn pink" type="submit" value="Submit" />
       </form>
