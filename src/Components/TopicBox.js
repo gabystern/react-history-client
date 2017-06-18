@@ -19,4 +19,4 @@ const TopicBox = ({ topic }) => {
   )
 }
 
-export default TopicBox
+export default TopicBox;

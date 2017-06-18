@@ -1,7 +1,50 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-import { Parallax, Background } from 'react-parallax';
+import { Link } from 'react-router-dom';
+// import { Parallax, Background } from 'react-parallax';
+import Parallax from 'react-springy-parallax'
 
+
+// <div>
+//   <Link className="btn btn-primary" to={`/${this.props.topic.id}/edit`}>Edit This History</Link>
+//     <Parallax ref='parallax' pages={3}>
+//
+//       <Parallax.Layer offset={0} id="first">
+//         <img src={this.props.topic.events[0].event_medium.url}/>
+//           <h1>something else</h1>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//           <p>{this.props.topic.events[0].event_text.text}</p>
+//
+//       </Parallax.Layer>
+//       <Parallax.Layer offset={1}>
+//         <img src={this.props.topic.events[1].event_medium.url}/>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//         <p>{this.props.topic.events[0].event_text.text}</p>
+//
+//       </Parallax.Layer>
+//     </Parallax>
+// </div>
 export default class TopicTimeline extends Component {
   constructor(props) {
     super(props);
@@ -33,60 +76,37 @@ export default class TopicTimeline extends Component {
     return event_array;
   }
 
-  makeJson() {
-    let topic = this.props.topic
-    return {
-      title: {
-        media: {
-          url: topic.text_medium.url,
-          caption: topic.title_medium.caption
-        },
-        text: {
-          headline: topic.title_text.headline,
-          text: topic.title_text.text
-        }
-      },
-      events: this.makeEventsJson()
-    }
-  }
-
   render() {
+    const styles = {
+            fontFamily: 'Menlo-Regular, Menlo, monospace',
+            fontSize: 30,
+            lineHeight: '10px',
+            color: 'white'
+            // display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }
     return (
-      <div>
-        <Parallax strength={300}>
-          <Background>
-            <img src={this.props.topic.events[0].event_medium.url}/>
-            <img src={this.props.topic.events[1].event_medium.url}/>
-          </Background>
-          <h1>something else</h1>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
-          <p>{this.props.topic.events[0].event_text.text}</p>
+        <Parallax ref="parallax" pages={3}>
+
+          <Parallax.Layer offset={0} speed={1} style={{ backgroundImage: `url(${this.props.topic.events[0].event_medium.url})`, backgroundSize: 'cover'}} />
+          <Parallax.Layer offset={1} speed={1} style={{ backgroundImage: `url(${this.props.topic.events[1].event_medium.url})`, backgroundSize: 'cover' }} />
+
+          <Parallax.Layer
+            offset={0}
+            speed={0}
+            style={styles}
+            onClick={() => this.refs.parallax.scrollTo(1)}>
+            <p>{this.props.topic.events[0].event_text.text}</p>
+          </Parallax.Layer>
+
+          <Parallax.Layer
+            offset={1}
+            speed={-0.1}
+            style={styles}
+            onClick={() => this.refs.parallax.scrollTo(2)}>
+            <p>{this.props.topic.events[1].event_text.text}</p>
+          </Parallax.Layer>
+
         </Parallax>
-      </div>
     )
   }
 }

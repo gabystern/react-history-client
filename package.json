@@ -7,6 +7,9 @@
     "react-dom": "^15.6.1",
     "react-parallax": "^1.4.1",
     "react-router-dom": "^4.1.1",
+    "react-springy-parallax": "^1.0.11",
+    "rellax": "^1.0.0",
+    "scroll-parallax": "^2.0.0",
     "timelinejs": "^2.35.6"
   },
   "devDependencies": {

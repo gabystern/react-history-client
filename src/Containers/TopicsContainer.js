@@ -4,6 +4,7 @@ import '../TopicsContainer.css';
 import TopicList from '../Components/TopicList';
 import TopicTimeline from '../Components/TopicTimeline';
 import HistoryNewForm from '../Components/HistoryNewForm';
+import TopicEditForm from './TopicEditForm';
 
 class TopicsContainer extends Component {
   constructor() {
@@ -14,6 +15,7 @@ class TopicsContainer extends Component {
     }
 
     this.addNewHistory = this.addNewHistory.bind(this);
+    this.updateTopic = this.updateTopic.bind(this);
   }
 
   componentDidMount() {
@@ -48,7 +50,6 @@ class TopicsContainer extends Component {
         }
       }
     })
-    console.log(events)
 
     fetch('http://localhost:3000/api/v1/topics', {
       method: 'POST',
@@ -71,7 +72,11 @@ class TopicsContainer extends Component {
         }
       }))
 
-    this.props.history.push("/")
+    this.props.history.push("/");
+  }
+
+  updateTopic(updatedTopic) {
+    console.log('hello');
   }
 
   render() {
@@ -80,14 +85,22 @@ class TopicsContainer extends Component {
         <nav>
           <div className="nav-wrapper">
             <ul className="left hide-on-med-and-down">
+              <li><Link to="/">Homepage</Link></li>
               <li><Link to="/new">Add A New History</Link></li>
             </ul>
           </div>
         </nav>
 
-        <div className="container">
           <Switch>
             <Route exact path='/new' render={() => <HistoryNewForm onSubmit={this.addNewHistory}/>} />
+            <Route exact path='/:id/edit' render={(routerProps) => {
+              const id = routerProps.match.params.id
+              const topic = this.state.topics.find( t =>  t.id === parseInt(id) )
+              if (!topic) {
+                return null
+              }
+              return <TopicEditForm topic={topic} onSubmit={this.updateTopic} />
+            }} />
             <Route exact path='/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const topic = this.state.topics.find(t => t.id === parseInt(id) )
@@ -95,7 +108,6 @@ class TopicsContainer extends Component {
             }}/>
             <Route render={this.renderTopics.bind(this)} />
           </Switch>
-        </div>
       </div>
     );
   }
