@@ -47,6 +47,9 @@ class TopicsContainer extends Component {
         event_text_attributes: {
           headline: e.headline,
           text: e.text
+        },
+        event_start_date_attributes: {
+          year: e.year
         }
       }
     })
@@ -76,7 +79,45 @@ class TopicsContainer extends Component {
   }
 
   updateTopic(updatedTopic) {
-    console.log('hello');
+
+    let events = updatedTopic.events.map(e => {
+      return {
+        event_medium_attributes: e.event_medium,
+        event_text_attributes: e.event_text,
+        event_start_date_attributes: e.event_start_date
+      }
+    })
+    debugger
+    fetch(`http://localhost:3000/api/v1/topics/${updatedTopic.id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'accept': 'application/json'
+      },
+      body: JSON.stringify({
+        topic: {
+          id: updatedTopic.id,
+          name: updatedTopic.name,
+          title_text_attributes: { id: updatedTopic.title_text_id, headline: updatedTopic.title_text_headline, text: updatedTopic.title_text_text },
+          title_medium_attributes: { id: updatedTopic.title_medium_id, url: updatedTopic.title_medium_url, caption: updatedTopic.title_medium_caption },
+          events_attributes: events
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(() => {
+      this.setState(function(prevState){
+        return {
+          topics: prevState.topics.map(function(t){
+            if(t.id !== updatedTopic.id) {
+              return t
+            } else {
+              return updatedTopic
+            }
+          })
+        }
+      })
+    })
   }
 
   render() {
