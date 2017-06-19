@@ -143,7 +143,7 @@ class TopicEditForm extends Component {
           <h3>Edit Events</h3>
           {this.renderEvents()}
 
-          <input className="waves-effect waves-light btn pink" type="submit" value="Submit" />
+          <input className="waves-effect waves-light btn deep-purple darken-4" type="submit" value="Submit" />
         </form>
       </div>
     )
