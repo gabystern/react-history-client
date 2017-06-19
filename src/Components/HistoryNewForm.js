@@ -91,7 +91,7 @@ export default class HistoryNewForm extends Component {
 
   render() {
     return (
-    <div>
+    <div className="add-form">
       <h1>Add a New History</h1>
       <form className="hover" onSubmit={this.handleSubmit}>
         <div className="row">

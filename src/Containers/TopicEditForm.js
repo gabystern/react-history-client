@@ -110,7 +110,7 @@ class TopicEditForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-history">
         <h1>Edit This History</h1>
         <form className="hover" onSubmit={this.handleSubmit}>
           <div className="row">
