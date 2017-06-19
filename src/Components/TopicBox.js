@@ -7,7 +7,7 @@ const TopicBox = ({ topic }) => {
        <div className="col s12 m4 center-align">
          <div className="card">
            <div className="card-image">
-             <img className="image" src={topic.title_medium.url} />
+             <img className="image" src={topic.title_medium.url}/>
              <span className="card-title">{topic.name}</span>
            </div>
            <div className="card-content">

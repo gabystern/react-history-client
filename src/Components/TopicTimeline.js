@@ -36,6 +36,7 @@ export default class TopicTimeline extends Component {
                       <div>
                         <p>{e.event_text.text}</p>
                         <Link to={`/${this.props.topic.id}/edit`}>Edit {this.props.topic.name}s History</Link>
+                        <input type='button' value ='DELETE' onClick={() => this.props.handlesDelete(this.props.topic.id)}/>
                       </div>
                     </Parallax.Layer>
           })}

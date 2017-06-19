@@ -16,6 +16,7 @@ class TopicsContainer extends Component {
 
     this.addNewHistory = this.addNewHistory.bind(this);
     this.updateTopic = this.updateTopic.bind(this);
+    this.handlesDelete = this.handlesDelete.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +32,7 @@ class TopicsContainer extends Component {
           <h1>CREATING HISTORY</h1>
         </div>
         <div className="row">
-          <TopicList topicList={this.state.topics}/>
+          <TopicList topicList={this.state.topics} handlesDelete={this.handlesDelete}/>
         </div>
       </div>
     )
@@ -87,7 +88,7 @@ class TopicsContainer extends Component {
         event_start_date_attributes: e.event_start_date
       }
     })
-    debugger
+
     fetch(`http://localhost:3000/api/v1/topics/${updatedTopic.id}`, {
       method: 'PATCH',
       headers: {
@@ -120,6 +121,23 @@ class TopicsContainer extends Component {
     })
   }
 
+  handlesDelete(id) {
+    debugger
+    fetch(`http://localhost:3000/api/v1/topics/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(() => {
+      this.setState( prevState => {
+        return {
+          topics: prevState.topics.filter( topic => topic.id !== id)
+        }
+      })
+      this.props.history.push('/')
+    })
+  }
+
+
   render() {
     return (
       <div>
@@ -145,7 +163,7 @@ class TopicsContainer extends Component {
             <Route exact path='/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
               const topic = this.state.topics.find(t => t.id === parseInt(id) )
-              return <TopicTimeline topic={topic} />
+              return <TopicTimeline topic={topic} handlesDelete={this.handlesDelete}/>
             }}/>
             <Route render={this.renderTopics.bind(this)} />
           </Switch>
