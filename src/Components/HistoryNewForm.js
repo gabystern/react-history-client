@@ -84,7 +84,6 @@ export default class HistoryNewForm extends Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state)
     e.preventDefault();
     this.props.onSubmit(this.state);
   }

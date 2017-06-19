@@ -120,7 +120,6 @@ class TopicsContainer extends Component {
         }
       })
     })
-
     this.props.history.push(`/${updatedTopic.id}`)
   }
 
