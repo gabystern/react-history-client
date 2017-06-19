@@ -120,6 +120,7 @@ class TopicsContainer extends Component {
         }
       })
     })
+    this.props.history.push('/')
   }
 
   handlesDelete(id) {
