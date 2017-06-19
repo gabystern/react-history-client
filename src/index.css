@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
 .card {
@@ -32,19 +31,19 @@ html {
   background-size: cover;
 }
 
-span.card-title {
+span.#card-title.card-title {
+  font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
 }
 
 .nav {
   background-color: #000000 !important;
+  height: 40px;
+  line-height: 30px;
 }
 
-nav {
-    height: 40px;
-    line-height: 30px;
-
 .p-event {
+font-family: 'Roboto Condensed', sans-serif;
   line-height: 1.5;
 }
 
@@ -63,4 +62,10 @@ nav {
   padding: 10px;
   font-family: 'Spectral', serif;
   border: 15px solid #000000;
+}
+
+#button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20;
+  text-shadow: none;
 }
