@@ -29,9 +29,9 @@ class TopicsContainer extends Component {
     return (
       <div>
         <div className="row">
-          <h1>CREATING HISTORY</h1>
+          <h1>Creating History</h1>
         </div>
-        <div className="row">
+        <div className="row" id="home">
           <TopicList topicList={this.state.topics} handlesDelete={this.handlesDelete}/>
         </div>
       </div>
@@ -143,7 +143,7 @@ class TopicsContainer extends Component {
     return (
       <div>
         <nav>
-          <div className="nav-wrapper">
+          <div className="nav-wrapper black">
             <ul className="left hide-on-med-and-down">
               <li><Link to="/">Homepage</Link></li>
               <li><Link to="/new">Add A New History</Link></li>

@@ -11,11 +11,10 @@ const TopicList = ({ topicList }) => {
         </Link>
       </div>
     )
-
   })
 
   return (
-    <div>
+    <div className="topics-background">
     {allTopics}
     </div>
   )

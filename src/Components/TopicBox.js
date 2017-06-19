@@ -10,9 +10,6 @@ const TopicBox = ({ topic }) => {
              <img className="image" src={topic.title_medium.url}/>
              <span className="card-title">{topic.name}</span>
            </div>
-           <div className="card-content">
-             <p>{topic.title_text.text}</p>
-           </div>
          </div>
        </div>
      </div>
