@@ -120,7 +120,7 @@ class TopicsContainer extends Component {
         }
       })
     })
-    this.props.history.push('/')
+    this.props.history.push(`/${updatedTopic.id}`)
   }
 
   handlesDelete(id) {
@@ -134,8 +134,8 @@ class TopicsContainer extends Component {
           topics: prevState.topics.filter( topic => topic.id !== id)
         }
       })
-      this.props.history.push('/')
     })
+    this.props.history.push('/')
   }
 
 

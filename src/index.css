@@ -43,4 +43,24 @@ span.card-title {
 nav {
     height: 40px;
     line-height: 30px;
+
+.p-event {
+  line-height: 1.5;
+}
+
+.individual-event {
+  background-color: rgba(255, 255, 2555, 0.5);
+  border-radius: 20px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.edit-history, .add-form {
+  background-color: rgba(211,211,211, .2);
+  margin: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Spectral', serif;
+  border: 15px solid #000000;
 }
