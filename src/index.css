@@ -32,7 +32,7 @@ html {
 }
 
 span.#card-title.card-title {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Raleway', sans-serif;
   text-align: center;
 }
 
@@ -43,7 +43,7 @@ span.#card-title.card-title {
 }
 
 .p-event {
-font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Raleway', sans-serif;
   line-height: 1.5;
 }
 
@@ -64,12 +64,12 @@ font-family: 'Roboto Condensed', sans-serif;
   margin: 40px;
   border-radius: 10px;
   padding: 10px;
-  font-family: 'Spectral', serif;
+  font-family: 'Raleway', sans-serif;
   border: 15px solid #000000;
 }
 
 #button {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 20;
   text-shadow: none;
 }
