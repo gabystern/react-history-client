@@ -140,17 +140,19 @@ class TopicsContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main">
         <nav>
           <div className="nav-wrapper black">
             <ul className="left hide-on-med-and-down">
               <li><Link to="/">Homepage</Link></li>
               <li><Link to="/new">Add A New History</Link></li>
+              <li><Link to="/about">About</Link></li>
             </ul>
           </div>
         </nav>
 
           <Switch>
+            <Route path="/about" render={() => {return <h1>We Love history!</h1>}} />
             <Route exact path='/new' render={() => <HistoryNewForm onSubmit={this.addNewHistory}/>} />
             <Route exact path='/:id/edit' render={(routerProps) => {
               const id = routerProps.match.params.id
@@ -167,6 +169,7 @@ class TopicsContainer extends Component {
             }}/>
             <div className="container"><Route render={this.renderTopics.bind(this)} /></div>
           </Switch>
+
       </div>
     );
   }
