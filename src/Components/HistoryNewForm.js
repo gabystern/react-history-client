@@ -143,9 +143,9 @@ export default class HistoryNewForm extends Component {
               <input type="text" placeholder="Image Caption" name="event_medium.caption" onChange={this.handleEventChange} />
             </div>
           </div>
-        <button className="waves-effect waves-light btn lime" onClick={this.addEvent}>Add Event</button>
+        <button className="waves-effect waves-light btn deep-purple darken-4" onClick={this.addEvent}>Add Event</button>
         <br/><br/>
-        <input className="waves-effect waves-light btn pink" type="submit" value="Submit" />
+        <input className="waves-effect waves-light btn deep-purple darken-4" type="submit" value="Submit" />
       </form>
     </div>
 

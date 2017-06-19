@@ -1,19 +1,54 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
 .card {
   width:300px;
+  opacity: 0.89;
 }
 
 .image {
   height: 250px;
   width: 250px;
 }
+
+.topics-background {
+  background-image: url("https://db4sgowjqfwig.cloudfront.net/campaigns/57369/assets/377938/Parchment-Body.png");
+}
+
+h1 {
+  font-family: 'Anton', sans-serif;
+  text-align: center;
+  opacity: 0.75;
+}
+
+html {
+  background: url("http://68.media.tumblr.com/tumblr_m9qrir9yjM1ruxnlh.gif") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+span.#card-title.card-title {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.nav {
+  background-color: #000000 !important;
+  height: 40px;
+  line-height: 30px;
+}
+
 .p-event {
+font-family: 'Raleway', sans-serif;
   line-height: 1.5;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
 }
 
 .individual-event {
@@ -29,6 +64,12 @@ body {
   margin: 40px;
   border-radius: 10px;
   padding: 10px;
-  font-family: 'Spectral', serif;
+  font-family: 'Raleway', sans-serif;
   border: 15px solid #000000;
+}
+
+#button {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20;
+  text-shadow: none;
 }
