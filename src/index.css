@@ -6,9 +6,41 @@ body {
 
 .card {
   width:300px;
+  opacity: 0.75;
 }
 
 .image {
   height: 250px;
   width: 250px;
+}
+
+.topics-background {
+  background-image: url("https://db4sgowjqfwig.cloudfront.net/campaigns/57369/assets/377938/Parchment-Body.png");
+}
+
+h1 {
+  font-family: 'Apple Chancery';
+  text-align: center;
+  opacity: 0.75;
+}
+
+html {
+  background: url("http://68.media.tumblr.com/tumblr_m9qrir9yjM1ruxnlh.gif") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+span.card-title {
+  text-align: center;
+}
+
+.nav {
+  background-color: #000000 !important;
+}
+
+nav {
+    height: 40px;
+    line-height: 30px;
 }
