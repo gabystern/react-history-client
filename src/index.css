@@ -5,7 +5,7 @@ body {
 
 .card {
   width:300px;
-  opacity: 0.75;
+  opacity: 0.89;
 }
 
 .image {
@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-  font-family: 'Apple Chancery';
+  font-family: 'Anton', sans-serif;
   text-align: center;
   opacity: 0.75;
 }
@@ -45,6 +45,10 @@ span.#card-title.card-title {
 .p-event {
 font-family: 'Roboto Condensed', sans-serif;
   line-height: 1.5;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
 }
 
 .individual-event {

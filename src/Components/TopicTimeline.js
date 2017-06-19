@@ -13,7 +13,7 @@ export default class TopicTimeline extends Component {
 
   render() {
     const styles = {
-            fontFamily: "'Karla', sans-serif;",
+            fontFamily: "'Raleway', sans-serif",
             fontSize: 20,
             lineHeight: '10px',
             color: 'white',
