@@ -11,12 +11,15 @@ class TopicsContainer extends Component {
     super();
 
     this.state = {
-      topics: []
+      topics: [],
+      searchTerm: ''
     }
 
     this.addNewHistory = this.addNewHistory.bind(this);
     this.updateTopic = this.updateTopic.bind(this);
     this.handlesDelete = this.handlesDelete.bind(this);
+    this.handlesSearchTarget = this.handlesSearchTarget.bind(this);
+
   }
 
   componentDidMount() {
@@ -31,8 +34,10 @@ class TopicsContainer extends Component {
         <div className="row">
           <h1>Creating History</h1>
         </div>
+
         <div className="row" id="home">
-          <TopicList topicList={this.state.topics} handlesDelete={this.handlesDelete}/>
+          <TopicList topicList={this.state.topics} handlesDelete={this.handlesDelete} searchTerm={this.state.searchTerm}/>
+
         </div>
       </div>
     )
@@ -138,6 +143,13 @@ class TopicsContainer extends Component {
     this.props.history.push('/')
   }
 
+
+  handlesSearchTarget(event) {
+    this.setState({
+      searchTerm: event.target.value
+    })
+  }
+
   render() {
     return (
       <div>
@@ -146,6 +158,12 @@ class TopicsContainer extends Component {
             <ul className="left hide-on-med-and-down">
               <li><Link to="/">Homepage</Link></li>
               <li><Link to="/new">Add A New History</Link></li>
+              <li class="input-field"><form onChange={this.handlesSearchTarget}>
+                <input id="search" type="search" required/>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </form></li>
+
             </ul>
           </div>
         </nav>
