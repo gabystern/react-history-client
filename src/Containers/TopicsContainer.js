@@ -123,7 +123,6 @@ class TopicsContainer extends Component {
   }
 
   handlesDelete(id) {
-    debugger
     fetch(`http://localhost:3000/api/v1/topics/${id}`, {
       method: 'DELETE'
     })
