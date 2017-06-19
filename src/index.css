@@ -73,3 +73,18 @@ font-family: 'Raleway', sans-serif;
   font-size: 20;
   text-shadow: none;
 }
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+
+.input-field input[type=search] {
+  display: inline;
+  margin-top: 10px;
+  height: 40px;
+  background-color: white;
+  font-family: sans-serif;
+  border-radius: 20px;
+}
+
+nav .input-field {
+  margin-right: 10px;
+}

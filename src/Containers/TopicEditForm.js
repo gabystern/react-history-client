@@ -81,23 +81,23 @@ class TopicEditForm extends Component {
 
     switch (e.target.name) {
       case "event_text.headline":
-        events[parseInt(e.target.id)].event_text.headline = e.target.value
+        events[parseInt(e.target.id, 10)].event_text.headline = e.target.value
         this.setState({ events: events })
         break;
       case "event_text.text":
-        events[parseInt(e.target.id)].event_text.text = e.target.value
+        events[parseInt(e.target.id, 10)].event_text.text = e.target.value
         this.setState({ events: events })
         break;
       case "event_start_date":
-        events[parseInt(e.target.id)].event_start_date.year = e.target.value
+        events[parseInt(e.target.id, 10)].event_start_date.year = e.target.value
         this.setState({ events: events })
         break;
       case "event_medium.url":
-        events[parseInt(e.target.id)].event_medium.url = e.target.value
+        events[parseInt(e.target.id, 10)].event_medium.url = e.target.value
         this.setState({ events: events })
         break;
       case "event_medium.caption":
-        events[parseInt(e.target.id)].event_medium.caption = e.target.value
+        events[parseInt(e.target.id, 10)].event_medium.caption = e.target.value
         this.setState({ events: events })
         break;
     }

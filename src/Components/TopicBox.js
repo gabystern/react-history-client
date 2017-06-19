@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 const TopicBox = ({ topic }) => {
   return (
@@ -7,7 +6,7 @@ const TopicBox = ({ topic }) => {
        <div className="col s12 m4 center-align">
          <div className="card">
            <div className="card-image">
-             <img className="image" src={topic.title_medium.url}/>
+             <img alt="Link Broken" className="image" src={topic.title_medium.url}/>
              <span className="card-title" id="card-title">{topic.name}</span>
            </div>
          </div>

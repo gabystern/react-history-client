@@ -158,15 +158,13 @@ class TopicsContainer extends Component {
             <ul className="left hide-on-med-and-down">
               <li><Link to="/">Homepage</Link></li>
               <li><Link to="/new">Add A New History</Link></li>
-              <li class="input-field"><form onChange={this.handlesSearchTarget}>
-                <input id="search" type="search" required/>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-                </form>
-              </li>
               <li><Link to="/about">About</Link></li>
-
             </ul>
+            <div className="right hide-on-med-and-down">
+              <form className="input-field">
+                <input type="search" onChange={this.handlesSearchTarget} placeholder="Search" required/>
+              </form>
+            </div>
           </div>
         </nav>
 
@@ -175,7 +173,7 @@ class TopicsContainer extends Component {
             <Route exact path='/new' render={() => <HistoryNewForm onSubmit={this.addNewHistory}/>} />
             <Route exact path='/:id/edit' render={(routerProps) => {
               const id = routerProps.match.params.id
-              const topic = this.state.topics.find( t =>  t.id === parseInt(id) )
+              const topic = this.state.topics.find( t =>  t.id === parseInt(id, 10) )
               if (!topic) {
                 return null
               }
@@ -183,7 +181,7 @@ class TopicsContainer extends Component {
             }} />
             <Route exact path='/:id' render={(routerProps) => {
               const id = routerProps.match.params.id
-              const topic = this.state.topics.find(t => t.id === parseInt(id) )
+              const topic = this.state.topics.find(t => t.id === parseInt(id, 10) )
               return <TopicTimeline topic={topic} handlesDelete={this.handlesDelete}/>
             }}/>
             <div className="container"><Route render={this.renderTopics.bind(this)} /></div>
