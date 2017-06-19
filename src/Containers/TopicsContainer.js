@@ -82,6 +82,7 @@ class TopicsContainer extends Component {
 
     let events = updatedTopic.events.map(e => {
       return {
+        id: e.event_medium.event_id,
         event_medium_attributes: e.event_medium,
         event_text_attributes: e.event_text,
         event_start_date_attributes: e.event_start_date
@@ -147,7 +148,7 @@ class TopicsContainer extends Component {
               const topic = this.state.topics.find(t => t.id === parseInt(id) )
               return <TopicTimeline topic={topic} />
             }}/>
-            <Route render={this.renderTopics.bind(this)} />
+            <div className="container"><Route render={this.renderTopics.bind(this)} /></div>
           </Switch>
       </div>
     );
