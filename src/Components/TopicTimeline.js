@@ -34,10 +34,9 @@ export default class TopicTimeline extends Component {
                       style={styles}
                       onClick={() => this.refs.parallax.scrollTo(idx + 1)}>
                       <div className="individual-event">
-                        <p className='p-event'>{e.event_text.text}</p>
                         <p className='p-event'>{e.event_start_date.year}</p>
-                        <Link to={`/${this.props.topic.id}/edit`}>Edit {this.props.topic.name}s History</Link>
-                        <p><input type='button' class="waves-effect waves-light btn" value ='DELETE' onClick={() => this.props.handlesDelete(this.props.topic.id)}/></p>
+                        <p className='p-event'>{e.event_text.text}</p>
+                        <Link className="waves-effect waves-light btn grey darken-1" id="button" to={`/${this.props.topic.id}/edit`}>Edit History</Link>  <input type='button' className="waves-effect waves-light btn grey darken-1" id="button" value ='DELETE' onClick={() => this.props.handlesDelete(this.props.topic.id)}/>
                       </div>
                     </Parallax.Layer>
           })}

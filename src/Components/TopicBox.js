@@ -8,7 +8,7 @@ const TopicBox = ({ topic }) => {
          <div className="card">
            <div className="card-image">
              <img className="image" src={topic.title_medium.url}/>
-             <span className="card-title">{topic.name}</span>
+             <span className="card-title" id="card-title">{topic.name}</span>
            </div>
          </div>
        </div>
