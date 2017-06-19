@@ -13,11 +13,11 @@ export default class TopicTimeline extends Component {
 
   render() {
     const styles = {
-            fontFamily: 'Menlo-Regular, Menlo, monospace',
+            fontFamily: "Spectral', serif",
             fontSize: 20,
             lineHeight: '10px',
             color: 'white',
-            textShadow: 'black 0.1em 0.1em 0.2em',
+            textShadow: '1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000',
             display: 'flex',
             alignItems: 'baseline'
         }
@@ -33,10 +33,11 @@ export default class TopicTimeline extends Component {
                       speed={0}
                       style={styles}
                       onClick={() => this.refs.parallax.scrollTo(idx + 1)}>
-                      <div>
-                        <p>{e.event_text.text}</p>
+                      <div className="individual-event">
+                        <p className='p-event'>{e.event_text.text}</p>
+                        <p className='p-event'>{e.event_start_date.year}</p>
                         <Link to={`/${this.props.topic.id}/edit`}>Edit {this.props.topic.name}s History</Link>
-                        <input type='button' value ='DELETE' onClick={() => this.props.handlesDelete(this.props.topic.id)}/>
+                        <p><input type='button' class="waves-effect waves-light btn" value ='DELETE' onClick={() => this.props.handlesDelete(this.props.topic.id)}/></p>
                       </div>
                     </Parallax.Layer>
           })}
