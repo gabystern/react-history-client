@@ -43,8 +43,10 @@ span.#card-title.card-title {
 }
 
 .p-event {
-font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
   line-height: 1.5;
+  color: black;
+  font-weight: bold;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

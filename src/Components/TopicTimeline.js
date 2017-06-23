@@ -17,7 +17,6 @@ export default class TopicTimeline extends Component {
             fontSize: 20,
             lineHeight: '10px',
             color: 'white',
-            textShadow: '1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000',
             display: 'flex',
             alignItems: 'baseline'
         }
