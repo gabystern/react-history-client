@@ -5,6 +5,7 @@ import TopicList from '../Components/TopicList';
 import TopicTimeline from '../Components/TopicTimeline';
 import HistoryNewForm from '../Components/HistoryNewForm';
 import TopicEditForm from './TopicEditForm';
+import {HistoryAdapter} from './Adapters'
 
 class TopicsContainer extends Component {
   constructor() {
@@ -60,21 +61,7 @@ class TopicsContainer extends Component {
       }
     })
 
-    fetch('http://localhost:3000/api/v1/topics', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'accept': 'application/json'
-      },
-      body: JSON.stringify({
-        topic: {
-          name: newTopic.name,
-          title_text_attributes: { headline: newTopic.title_text_headline, text: newTopic.title_text_text },
-          title_medium_attributes: { url: newTopic.title_medium_url, caption: newTopic.title_medium_caption },
-          events_attributes: events
-        }
-      })
-    }).then(resp => resp.json() )
+    HistoryAdapter.addHistory()
       .then(topic => this.setState((previousState) => {
         return {
           topics: [...previousState.topics, topic]
